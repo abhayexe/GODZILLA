@@ -25,7 +25,7 @@ renderer.setPixelRatio(window.devicePixelRatio);
 renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 renderer.gammaOutput = true;
-renderer.gammaFactor = 2.2; 
+renderer.gammaFactor = 1/2.2; 
 
 const pmremGenerator = new THREE.PMREMGenerator( renderer );
 
@@ -1018,6 +1018,59 @@ scene.background = null;
 // replacing 'path/to/your/skydome.gltf' with the actual path to your GLTF skydome model
 //addSkydome('public/panorama/scene.gltf');
 
+
+
+
+//music
+const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+			let audioBuffer;
+			let audioSource;
+			let gainNode;
+
+			fetch('god.mp3')
+				.then(response => response.arrayBuffer())
+				.then(arrayBuffer => audioContext.decodeAudioData(arrayBuffer))
+				.then(buffer => {
+					audioBuffer = buffer;
+					setupAudioControls();
+				})
+				.catch(e => console.error(e));
+
+			function setupAudioControls() {
+				const playPauseButton = document.getElementById('play-pause');
+				const volumeControl = document.getElementById('volume-control');
+
+				playPauseButton.addEventListener('click', togglePlay);
+				volumeControl.addEventListener('input', changeVolume);
+
+				gainNode = audioContext.createGain();
+				gainNode.connect(audioContext.destination);
+				gainNode.gain.setValueAtTime(volumeControl.value, audioContext.currentTime);
+			}
+
+			function togglePlay() {
+				if (audioContext.state === 'suspended') {
+					audioContext.resume();
+				}
+
+				if (audioSource) {
+					audioSource.stop();
+					audioSource = null;
+					document.getElementById('play-pause').textContent = 'Play Music';
+				} else {
+					audioSource = audioContext.createBufferSource();
+					audioSource.buffer = audioBuffer;
+					audioSource.connect(gainNode);
+					audioSource.loop = true;
+					audioSource.start(0);
+					document.getElementById('play-pause').textContent = 'Pause Music';
+				}
+			}
+
+			function changeVolume(event) {
+				const volumeValue = event.target.value;
+				gainNode.gain.setValueAtTime(volumeValue, audioContext.currentTime);
+			}
 
 
 // Post-processing setup
