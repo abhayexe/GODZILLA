@@ -1,0 +1,11 @@
+Model Information:
+* title:	Dune - Arrakis (WIP)
+* source:	https://sketchfab.com/3d-models/dune-arrakis-wip-58bd8be249944f1b892a52eb52e06024
+* author:	Rostenbach (https://sketchfab.com/Rostenbach)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Dune - Arrakis (WIP)" (https://sketchfab.com/3d-models/dune-arrakis-wip-58bd8be249944f1b892a52eb52e06024) by Rostenbach (https://sketchfab.com/Rostenbach) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
