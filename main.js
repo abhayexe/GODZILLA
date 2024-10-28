@@ -239,7 +239,7 @@ loader.load('public/godzilla.glb', function (gltf) {
                 // envMapIntensity: 1.0
             });
 
-            child.material = physicalMaterial;
+            // child.material = physicalMaterial;
         }
     });
 
@@ -441,7 +441,7 @@ loader3.load(
       }
     });
 
-    mesh2.scale.set(20.2, 10.2, 20.2);
+    // mesh2.scale.set(20.2, 10.2, 20.2);
     //mesh2.position.set(327, 0, 203);
     //mesh2.position.set(50, -12.3, 50);//minecraft
    //mesh2.position.set(16, -2.3, -21);//museum
@@ -522,7 +522,7 @@ loader3.load(
           
         });
 
-        child.layers.enable(1);  // Enable bloom layer for this mesh
+        // child.layers.enable(1);  // Enable bloom layer for this mesh
       }
     });
 
@@ -569,45 +569,46 @@ loader3.load(
 
         // Preserve the original textures by copying the map from the original material
         const originalMaterial = child.material;
-        child.material = new THREE.MeshPhysicalMaterial({
-          color: 0x13293e,
-          map: texture,
-          map: originalMaterial.map,  // Retains the original texture
-          normalMap: originalMaterial.normalMap,  // Retains normal map if present
-          metalness: originalMaterial.metalness || 10,  // Adjust metalness for shine
-          roughness: originalMaterial.roughness || 0,  // Adjust roughness for surface finish
-          envMap: texture,  // Use chapel.png for reflection
-          envMapIntensity: 0.5,
+        // child.material = new THREE.MeshPhysicalMaterial({
+        //   color: 0x13293e,
+        //   map: texture,
+        //   map: originalMaterial.map,  // Retains the original texture
+        //   normalMap: originalMaterial.normalMap,  // Retains normal map if present
+        //   metalness: originalMaterial.metalness || 10,  // Adjust metalness for shine
+        //   roughness: originalMaterial.roughness || 0,  // Adjust roughness for surface finish
+        //   envMap: texture,  // Use chapel.png for reflection
+        //   envMapIntensity: 0.5,
 
-          //bumpMap: textureBump, // Adds a bump map to simulate surface detail (use a grayscale texture)
-          //bumpScale: 1.0,
+        //   //bumpMap: textureBump, // Adds a bump map to simulate surface detail (use a grayscale texture)
+        //   //bumpScale: 1.0,
           
-          //lightMap: textureLightMap, // Adds a light map that defines the light intensity across the surface
-          //lightMapIntensity: 0.0,
-          //wireframe: true,
+        //   //lightMap: textureLightMap, // Adds a light map that defines the light intensity across the surface
+        //   //lightMapIntensity: 0.0,
+        //   //wireframe: true,
 
-          transmission: 0,   // Full transparency (1 for fully transparent, 0 for opaque)
-            opacity: 1,        // Keep opacity at 1 for glass-like effect
-            transparent: true, // Enable transparency
-            roughness: 0.1,      // Smooth surface
-            metalness: 0,      // Non-metallic surface
-            ior: 1.5,          // Index of refraction (1.0 for air, around 1.5 for glass)
-            reflectivity: 1, // High reflectivity for mirror-like reflections
-            thickness: 3.1,    // Simulated thickness of the glass (in world units)
-            //envMapIntensity: 1.0,  // Adjust environment map reflections intensity
-            clearcoat: 1.0,    // Simulates a glossy clear coating
-            clearcoatRoughness: 0 ,
-          normalScale: 4,
-          normalRepeat: 10,
-          //roughness: 0.3,
-          sheen: new THREE.Color(0xff0000), // Red sheen for velvet-like effect
-          sheenRoughness: 0.5,        // Controls the softness of the sheen
-          specularIntensity: 0.8,     // Makes the material more reflective
-          specularColor: new THREE.Color(0xffffff),
+        //   transmission: 0,   // Full transparency (1 for fully transparent, 0 for opaque)
+        //     opacity: 1,        // Keep opacity at 1 for glass-like effect
+        //     transparent: true, // Enable transparency
+        //     roughness: 0.1,      // Smooth surface
+        //     metalness: 0,      // Non-metallic surface
+        //     ior: 1.5,          // Index of refraction (1.0 for air, around 1.5 for glass)
+        //     reflectivity: 1, // High reflectivity for mirror-like reflections
+        //     thickness: 3.1,    // Simulated thickness of the glass (in world units)
+        //     //envMapIntensity: 1.0,  // Adjust environment map reflections intensity
+        //     clearcoat: 1.0,    // Simulates a glossy clear coating
+        //     clearcoatRoughness: 0 ,
+        //   normalScale: 4,
+        //   normalRepeat: 10,
+        //   //roughness: 0.3,
+        //   sheen: new THREE.Color(0xff0000), // Red sheen for velvet-like effect
+        //   sheenRoughness: 0.5,        // Controls the softness of the sheen
+        //   specularIntensity: 0.8,     // Makes the material more reflective
+        //   specularColor: new THREE.Color(0xffffff),
           
-        });
+        // });
 
         child.layers.enable(1);  // Enable bloom layer for this mesh
+        // child.material = physicalMaterial;
       }
     });
 
@@ -620,7 +621,7 @@ loader3.load(
     mesh4.position.set(10, 16, -43);//face
     mesh4.visible = true;
    //mesh4.rotation.x = THREE.MathUtils.degToRad(90);
-    //scene.add(mesh4);
+    scene.add(mesh4);
 
     document.getElementById('progress-container').style.display = 'none';
     setupEventListeners();
@@ -639,7 +640,7 @@ loader3.load(
 //candle candle
 textureLoader3.load('sand.png', (texture) => {
   texture.mapping = THREE.EquirectangularReflectionMapping;  // Use equirectangular mapping
-  //scene.environment = texture;
+  scene.environment = texture;
 const loader3 = new GLTFLoader().setPath('public/candle/');
 let mesh4;
 loader3.load(
